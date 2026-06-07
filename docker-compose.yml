@@ -1,0 +1,20 @@
+services:
+  back:
+    build: ./back
+    ports:
+      - "4000:4000"
+    networks:
+      - galactus-network
+
+  front:
+    build: ./front
+    ports:
+      - "3000:3000"
+    depends_on:
+      - back
+    networks:
+      - galactus-network
+
+networks:
+  galactus-network:
+    driver: bridge

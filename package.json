@@ -1,0 +1,22 @@
+{
+  "name": "galactus-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "back",
+    "front"
+  ],
+  "scripts": {
+    "start": "concurrently \"npm start --workspace=back\" \"npm start --workspace=front\"",
+    "install-all": "npm install",
+    "docker:clean": "docker-compose down --rmi all --volumes --remove-orphans",
+    "docker:build": "docker-compose build --no-cache",
+    "docker:up": "docker-compose up -d",
+    "docker:stop": "docker-compose down",
+    "docker:free-ports": "lsof -ti :3000,4000 | xargs kill -9 || true",
+    "docker:reload": "npm run docker:free-ports && npm run docker:clean && npm run docker:build && npm run docker:up && docker image prune -f"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
