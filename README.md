@@ -55,6 +55,17 @@ Esto levantará:
 - **Backend** en el puerto `4000`
 - **Frontend** en el puerto `3000`
 
+### Build Secuencial (Para EC2 con poca RAM)
+Si el build paralelo se queda atascado en `npm install`, usa build secuencial:
+```bash
+docker compose build back && docker compose build front && docker compose up
+```
+
+O con reconstrucción completa sin caché:
+```bash
+docker compose build --no-cache back && docker compose build --no-cache front && docker compose up
+```
+
 ### Detener los servicios
 ```bash
 npm run docker:stop

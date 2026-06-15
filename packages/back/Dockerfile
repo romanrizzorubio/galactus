@@ -4,9 +4,9 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-COPY . .
+RUN npm ci --only=production --maxsockets=1
 
-RUN npm install
+COPY . .
 
 EXPOSE 4000
 
