@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm ci --only=production --maxsockets=1
+RUN npm install --only=production --maxsockets=1 --prefer-offline
 
 COPY . .
 
