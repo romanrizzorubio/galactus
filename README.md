@@ -48,7 +48,7 @@ Si prefieres usar Docker, puedes levantar ambos servicios de forma orquestada co
 
 ### Construir y Levantar
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 Esto levantará:
@@ -62,7 +62,7 @@ npm run docker:stop
 
 O directamente con Docker:
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ### Reconstrucción Completa (Limpieza de Espacio)
