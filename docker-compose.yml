@@ -1,13 +1,13 @@
 services:
   back:
-    build: ./back
+    build: ./packages/back
     ports:
       - "4000:4000"
     networks:
       - galactus-network
 
   front:
-    build: ./front
+    build: ./packages/front
     ports:
       - "3000:3000"
     depends_on:
