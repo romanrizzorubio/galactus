@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "back",
-    "front"
+    "packages/back",
+    "packages/front"
   ],
   "scripts": {
-    "start": "concurrently \"npm start --workspace=back\" \"npm start --workspace=front\"",
+    "start": "concurrently \"npm start --workspace=@folder/back\" \"npm start --workspace=@folder/front\"",
     "install-all": "npm install",
     "docker:clean": "docker-compose down --rmi all --volumes --remove-orphans",
     "docker:build": "docker-compose build --no-cache",

@@ -1,0 +1,35 @@
+body {
+  background-image: url(../../img/cosmico4.jpeg);
+  background-size: cover;
+}
+
+.mesa {
+  text-align: center;
+  padding-bottom: 64px;
+}
+
+.mesa h1 {
+  color: #e5a0df;
+  padding: 16px 0;
+  margin: 0;
+  font-size: 76px;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+}
+
+.mesa h2 {
+  color: #e5a0df;
+  margin: 0;
+  font-size: 48px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.mesa .container {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.mesa .progress {
+  margin-top: 0;
+  height: 5vh;
+}
+
