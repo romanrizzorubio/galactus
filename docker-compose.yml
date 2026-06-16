@@ -1,13 +1,17 @@
 services:
   back:
-    build: ./packages/back
+    build:
+      context: .
+      dockerfile: ./packages/back/Dockerfile
     ports:
       - "4000:4000"
     networks:
       - galactus-network
 
   front:
-    build: ./packages/front
+    build:
+      context: .
+      dockerfile: ./packages/front/Dockerfile
     ports:
       - "3000:3000"
     depends_on:
