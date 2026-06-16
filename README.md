@@ -66,6 +66,44 @@ O con reconstrucción completa sin caché:
 docker compose build --no-cache back && docker compose build --no-cache front && docker compose up
 ```
 
+### Opción B: Build Optimizado para Espacios Limitados (Recomendado para EC2)
+Si tienes un EC2 con poco espacio en disco o RAM limitada, sigue este proceso optimizado:
+
+```bash
+# 1. Limpiar Docker completamente
+docker compose down
+docker system prune -a --volumes -f
+
+# 2. Verificar espacio disponible
+df -h
+
+# 3. Build secuencial optimizado (construye uno a la vez para reducir uso de RAM)
+docker compose build --no-cache back && \
+docker compose build --no-cache front && \
+docker compose up -d
+
+# 4. Limpiar imágenes intermedias
+docker image prune -f
+```
+
+**Si aún necesitas más espacio, expande el volumen EBS:**
+```bash
+# Primero, identifica tu dispositivo de disco:
+lsblk
+
+# Después de modificar el tamaño del volumen en AWS Console, usa uno de estos:
+# Para /dev/xvda (instancias antiguas):
+sudo growpart /dev/xvda 1
+sudo resize2fs /dev/xvda1
+
+# Para /dev/nvme0n1 (instancias modernas t3, t4g, etc):
+sudo growpart /dev/nvme0n1 1
+sudo resize2fs /dev/nvme0n1p1
+
+# Verificar el nuevo espacio disponible
+df -h
+```
+
 ### Detener los servicios
 ```bash
 npm run docker:stop
